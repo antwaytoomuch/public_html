@@ -1,0 +1,38 @@
+
+body {
+	font-family: -apple-system, "Helvetica Neue", "Lucida Grande";
+	background: linear-gradient(180deg, #ffffff, #d7d7d7);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.apple-pay {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.apple-pay-button{
+	display: inline-block;
+    -webkit-appearance: -apple-pay-button;
+    -apple-pay-button-type: buy;
+	-apple-pay-button-style: black;
+	visibility: hidden;
+}
+.apple-pay-set-up-button {
+    display: inline-block;
+    -webkit-appearance: -apple-pay-button;
+    -apple-pay-button-type: set-up;
+	visibility: hidden;
+	-apple-pay-button-style: white-outline;
+}
+.apple-pay-button.visible {
+	visibility: visible;
+}
+.apple-pay-set-up-button.visible {
+	visibility: visible;
+}
+.apple-pay-button:active {
+	background-color: rgb(152, 152, 152);
+}

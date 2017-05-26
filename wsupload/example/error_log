@@ -1,0 +1,3 @@
+[09-Jan-2017 03:01:55 America/Chicago] PHP Warning:  require_once(/your/path/to/applepay_includes/apple_pay_conf.php): failed to open stream: No such file or directory in /home3/j6d4k1f0/public_html/wsupload/example/index.php on line 2
+[09-Jan-2017 03:01:55 America/Chicago] PHP Fatal error:  require_once(): Failed opening required '/your/path/to/applepay_includes/apple_pay_conf.php' (include_path='.:/opt/php56/lib/php') in /home3/j6d4k1f0/public_html/wsupload/example/index.php on line 2
+[09-Jan-2017 03:03:26 America/Chicago] PHP Warning:  file_get_contents(/your/path/to/applepay_includes/ApplePay.crt.pem): failed to open stream: No such file or directory in /home3/j6d4k1f0/public_html/wsupload/example/apple_pay_conf.php on line 9

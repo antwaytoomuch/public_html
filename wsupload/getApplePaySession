@@ -1,0 +1,12 @@
+<?php
+    header('Content-Type: application/json);
+
+    $merchantIdentifier = "merchant.com.example.warsawtest";
+    $domainName = "https://www.wsground.com/wsupload";
+    $displayName = "WSGround";
+
+    echo "Now in getApplePaySession file";
+    echo $merchantIdentifier;
+    echo $domainName;
+    echo $displayName;
+ ?>

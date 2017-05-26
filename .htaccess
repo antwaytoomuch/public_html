@@ -1,0 +1,2 @@
+AuthName "publicFolder"
+AuthUserFile "/home3/j6d4k1f0/.htpasswds/public_html/passwd"
