@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		// Below is the example of using CMPWAC
 		var merchantIdentifier = 'merchant.com.example.warsawtest';
     	var promise = ApplePaySession.canMakePaymentsWithActiveCard(merchantIdentifier);
-    	promise.then(
-					function (canMakePayments) {
+    	promise.then(function (canMakePayments) {
 						if (canMakePayments){
 							console.log("Im going to show apple pay button");
-							// showApplePayButton();
+							showApplePayButton();
 						}else {
 							console.log("Im going to show Set up button");
 							showApplePaySetUpButton();
+
 						}
 					}
 				)
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 });
 
-// Part where users can see & click the Set Up Pay button
+// This is where users can see & click the Set Up Pay button
 function showApplePaySetUpButton(){
 	var button = document.getElementsByClassName("apple-pay-set-up-button");
 	console.log(button[0]);
@@ -32,16 +32,38 @@ function showApplePaySetUpButton(){
 var setUpListener = document.getElementsByClassName("apple-pay-set-up-button");
 if(setUpListener[0]){
 	try{
-		setUpListener[0].addEventListener('click');
+		setUpListener[0].addEventListener('click', setUpApplePay);
 	} catch (e) {
-		ShowErrorAndRedirect(e);
+		// ShowErrorAndRedirect(e);
+		console.log(e);
 	}
 }else{
 	console.log("no eventListener ID !!!");
 }
+function setUpApplePay(){
+	console.log("I'm setting up Apple Pay");
+	var merchantIdentifier = 'merchant.com.example.warsawtest';
+
+	if (ApplePaySession.openPaymentSetup) {
+		// Display the Set up Apple Pay Button here…
+		ApplePaySession.openPaymentSetup(merchantIdentifier)
+		 .then(function(success) {
+			 if (success) {
+				 // Open payment setup successful
+				 console.log("setup successful");
+			 } else {
+				 console.log("setup failed");
+			 }
+		 })
+		 .catch(function(e) {
+			 console.log(e);
+		 });
+	}
 
 
+}
 
+// Below is the Apple Pay button part (buying with Apple Pay)
 function showApplePayButton() {
 	// HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 	// var button = document.getElementsByClassName("apple-pay-button"); #backup
@@ -54,16 +76,13 @@ function showApplePayButton() {
     // 	button.className += "visible";
 	// }
 }
-
 // When the AP button is clicked
-// This is the actual click action
 var el = document.getElementsByClassName("apple-pay-button");
 if(el[0]){
 	el[0].addEventListener('click', beginApplePay);
 }else{
 	console.log("no eventListener ID !!!");
 }
-
 // This is the function that handles AP session after clicking
 function beginApplePay(){
     console.log("Apple Pay session begins...");
